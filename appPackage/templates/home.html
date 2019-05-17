@@ -1,9 +1,210 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>FamerAid</title>
-</head>
-<body>
-<h1>this is the homepage of FarmAid!</h1>
-</body>
-</html>
+{% extends 'index.html'%}
+
+
+
+{% block home %}
+
+<div class="social grid">
+					<div class="grid-info">
+						{% if data %}
+						<center>
+						<div class="col-md-3 top-comment-grid">
+							<div class="comments likes">
+								<!-- <div class="comments-icon">
+									<i class="fa fa-thermometer-empty"></i>
+								</div> -->
+								<div class="comments-info likes-info">
+									<h3>{{data.temperature}}</h3>
+									<h4>Celcius<h4>
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+						</div>
+						<div class="col-md-3 top-comment-grid">
+							<div class="comments">
+								<!-- <div class="comments-icon">
+									<i class="fa fa-comments"></i>
+								</div> -->
+								<div class="comments-info">
+									<h3>{{data.humidity}}%</h3>
+									<h4>Humidity</h4>
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+						</div>
+						<div class="col-md-3 top-comment-grid">
+							<div class="comments tweets">
+								<!-- <div class="comments-icon">
+									<i class="fa fa-twitter"></i>
+								</div> -->
+								<div class="comments-info tweets-info">
+									<h3>{{data.moisture}}%</h3>
+									<h4>Moisture</h4>
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+						</div>
+						<div class="col-md-3 top-comment-grid">
+							<!-- <div class="comments views">
+								<div class="comments-icon">
+									<i class="fa fa-eye"></i>
+								</div>
+								<div class="comments-info views-info">
+									<h3>557K</h3>
+									<a href="#">Views</a>
+								</div>
+								<div class="clearfix"> </div>
+							</div> --> 
+							{% if data.status %}
+				 	<img src="{{ url_for('static', filename='images/watering.gif')}}" height="130" width="120" class="img-rounded img-responsive">
+				 	{% else %}
+				 	<img src="{{ url_for('static', filename='images/nowater.jpg')}}" height="130" width="120" class="img-rounded img-responsive">
+				 </div>
+				</center>
+				 {% endif %}
+						</div>
+
+						<div class="clearfix"> </div>
+					</div>
+					
+				{% else %}
+				<!-- put some error message here -->
+				
+					<div class="bg-primary text-warning">
+							<h3>Couldn't fetch data</h3>
+						</div>
+	
+				{% endif %}
+
+			<div class="agile-two-grids">
+				<div class="col-md-6 count">
+						<div class="count-grid">
+							<h3 class="title">Current time</h3>
+							<ul id="example">
+								<li><span class="hours" id="hours"></span><p class="hours_text">Hours</p></li>
+								<li class="seperator">:</li>
+								<li><span class="minutes" id="minutes"></span><p class="minutes_text">Minutes</p></li>
+								<li class="seperator">:</li>
+								<li><span class="seconds" id="seconds"></span><p class="seconds_text">Seconds</p></li>
+							</ul>
+							<div class="clearfix"> </div>
+							<!-- <script type="text/javascript" src="{{url_for('static', filename='js/jquery.countdown.min.js')}}"></script> -->
+							<script>
+								function startTime() {
+  								var today = new Date();
+  								var h = today.getHours();
+								  var m = today.getMinutes();
+								  var s = today.getSeconds();
+								  m = checkTime(m);
+								  s = checkTime(s);
+								  document.getElementById('hours').innerHTML = h;
+								  document.getElementById('minutes').innerHTML = m;
+								  document.getElementById('seconds').innerHTML = s;
+								  
+								  var t = setTimeout(startTime, 500);
+								}
+								function checkTime(i) {
+								  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+								  return i;
+								}
+								</script>
+						</div>
+				</div>
+				 
+
+
+				<div class="col-md-6 weather">
+					<div class="weather-right">
+						<div class="weather-heading">
+							<h3>Weather Forcast</h3>
+						</div>
+								<ul>
+									<li>
+										<figure class="icons">
+											<canvas id="partly-cloudy-day" width="60" height="60"></canvas>
+										</figure>
+										<h3>31 °C</h3>
+										<div class="clearfix"></div>
+									</li>
+									<li>
+										<figure class="icons">
+											<canvas id="clear-day" width="40" height="40"></canvas>
+										</figure>
+										<div class="weather-text">
+											<h4>Fri</h4>
+											<h5>32°C</h5>
+										</div>
+										<div class="clearfix"></div>
+									</li>
+									<li>
+										<figure class="icons">
+											<canvas id="snow" width="40" height="40"></canvas>
+										</figure>
+										<div class="weather-text">
+											<h4>Sat</h4>
+											<h5>29°C</h5>
+										</div>
+										<div class="clearfix"></div>
+									</li>
+									<li>
+										<figure class="icons">
+											<canvas id="partly-cloudy-night" width="40" height="40"></canvas>
+										</figure>
+										<div class="weather-text">
+											<h4>Sun</h4>
+											<h5>30 °C</h5>
+										</div>
+										<div class="clearfix"></div>
+									</li>
+									<li>
+										<figure class="icons">
+											<canvas id="cloudy" width="40" height="40"></canvas>
+										</figure>
+										<div class="weather-text">
+											<h4>Mon</h4>
+											<h5>30 °C</h5>
+										</div>
+										<div class="clearfix"></div>
+									</li>
+									<li>
+										<figure class="icons">
+											<canvas id="fog" width="40" height="40"></canvas>
+										</figure>
+										<div class="weather-text">
+											<h4>Tue</h4>
+											<h5>31 °C</h5>
+										</div>
+										<div class="clearfix"></div>
+									</li>
+								</ul>
+								<script>
+									 var icons = new Skycons({"color": "#fcb216"}),
+										  list  = [
+											"partly-cloudy-day"
+										  ],
+										  i;
+
+									  for(i = list.length; i--; )
+										icons.set(list[i], list[i]);
+									  icons.play();
+								</script>
+								<script>
+									 var icons = new Skycons({"color": "#000"}),
+										  list  = [
+											"clear-night","partly-cloudy-night", "cloudy", "clear-day", "sleet", "snow", "wind","fog"
+										  ],
+										  i;
+
+									  for(i = list.length; i--; )
+										icons.set(list[i], list[i]);
+									  icons.play();
+								</script>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+
+
+
+{% endblock home %}

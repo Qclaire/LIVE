@@ -8,3 +8,13 @@ class User(db.Model):
 
 	def __str__(self):
 		return self.username
+
+
+class Data(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	temperature = db.Column(db.Float, index=True)
+	moisture = db.Column(db.Float, index=True)
+	humidity = db.Column(db.Float, index=True)
+	status = db.Column(db.Boolean, index=True)
+
+

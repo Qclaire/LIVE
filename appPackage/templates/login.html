@@ -1,0 +1,13 @@
+	{% extends 'index.html'%}
+
+
+
+
+	{% block home %}
+				<form action="" method="post" class="form">
+					<input type="text" name="Username" value="Username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}">
+					<input type="password" name="Password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+					<input type="submit" class="register" value="Login">
+				</form>
+	{% endblock home %}
+			

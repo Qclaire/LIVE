@@ -1,0 +1,27 @@
+{% extends 'index.html'%}
+{%block home %}
+				
+				<div class="jumbotron text-justify">
+					<br>
+					<b><h3 >Humidity</h3></b><br>
+					<div class="text-warning">
+
+						<p>Humidity is the proportion of the air molecules around you that is water vapour. With more water vapour in the air the more comfortable you get and so do your plants. Otherwise the air will feel too dry and you and your plants will lose water fast. <br> We are measuring the humidity on your farm on a scale of zero to hundred, where zero means the air is completely dry with no water in it and hundred means the air is soaked with water. <br> You and your crops should feel comfortable with a hunidity between 45% and 75%.
+						 </p>
+					</div><br>
+					<b></b><h3>Soil Moisture</h3></b><br>
+					<div class="text-warning">
+						<p>
+							This is how wet the soil is. When the soil is completely dry, we place its value at 0% and at 100% when completely soaked with water. Both extremes are not friendly to your crops. We can't help much if a natural down pour cuases your farm to flood but other than restraining our from adding any more water. <br>
+							However, if too dry, we are here to soak it. The system will automatically be turned on and water your farm until there is optimum moisture.
+						</p>
+					</div><br>
+					<b><h3>Temperature</h3></b><br>
+					<div class="text-warning">
+						<p>
+							How hot or cold the environment on your farm is. While we can't do anything about it, we consider it in making some crucial decisions such as whether or not to water your crops.
+							If too high, we will refraim from watering your crops even if the moisture is too low. This is because water in high temperature will heat up and kill your crops. So we wait until the temperature is low enough, then give we give your crops a nice cool drink of water
+						</p>
+					</div>
+			   </div>
+{% endblock home%}
